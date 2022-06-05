@@ -1,10 +1,9 @@
 <script>
-    import monument2 from "/src/assets/monument2.png";
     import TitleBar from "../components/TitleBar.svelte";
     import MainNavigator from "../components/MainNavigator.svelte";
     import Chart from 'svelte-frappe-charts';
     import {getContext, onMount} from "svelte"
-    import Button from "../components/Button.svelte";
+    
 
     const monumentService = getContext("MonumentService");
 
@@ -58,10 +57,21 @@
     console.log("Button monuments is: ", buttonMonuments)
   }
 
+  function buttonFalse() {
+    buttonMonuments = false;
+    console.log("Button monuments is: ", buttonMonuments)
+  }
+
   function categoryTrue() {
     categoryButton = true;
     console.log("Button monuments is: ", categoryButton)
   }
+
+  function categoryFalse() {
+    categoryButton = false;
+    console.log("Button monuments is: ", categoryButton)
+  }
+  
 
   </script>
   
@@ -78,20 +88,27 @@
     
     <div class="column box has-text-centered">
         <div class="column box has-text-centered">
-          <button on:click="{buttonTrue}">
+          <button class="button" on:click="{buttonTrue}">
             Total Number Of Monuments
           </button>
           {#if buttonMonuments === true }
             <h1 class="title is-4">Number of Monuments to Date</h1>
+            <button class="button" on:click="{buttonFalse}">
+              Close
+            </button>
             <Chart data={data} type="bar" />
+
             {/if}
         </div>
         <div class="column box has-text-centered">
-          <button class="primary" on:click="{categoryTrue}">
+          <button class="button" on:click="{categoryTrue}">
             Monuments By Category
           </button>
           {#if categoryButton === true }
             <h1 class="title is-4">Types of Monuments</h1>
+            <button class="button" on:click="{categoryFalse}">
+              Close
+            </button>
             <Chart data={totalByCategory} type="line" />
             {/if}
         </div>

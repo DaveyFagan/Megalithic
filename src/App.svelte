@@ -12,7 +12,7 @@
   import Charts from "./pages/Charts.svelte";
   import Camera from "./pages/Camera.svelte";
 
-  setContext("MonumentService", new MonumentService("https://jagged-early-mangosteen.glitch.me"));
+  setContext("MonumentService", new MonumentService("http://localhost:4000"));
 
   let routes = {
     "/": Main,
