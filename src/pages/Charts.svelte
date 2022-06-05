@@ -4,8 +4,12 @@
     import MainNavigator from "../components/MainNavigator.svelte";
     import Chart from 'svelte-frappe-charts';
     import {getContext, onMount} from "svelte"
+    import Button from "../components/Button.svelte";
 
     const monumentService = getContext("MonumentService");
+
+    let buttonMonuments = false;
+    let categoryButton = false;
 
     let data = {
       labels: ['Monuments'],
@@ -49,6 +53,15 @@
      }
 
      });
+     function buttonTrue() {
+    buttonMonuments = true;
+    console.log("Button monuments is: ", buttonMonuments)
+  }
+
+  function categoryTrue() {
+    categoryButton = true;
+    console.log("Button monuments is: ", categoryButton)
+  }
 
   </script>
   
@@ -65,12 +78,22 @@
     
     <div class="column box has-text-centered">
         <div class="column box has-text-centered">
+          <button on:click="{buttonTrue}">
+            Total Number Of Monuments
+          </button>
+          {#if buttonMonuments === true }
             <h1 class="title is-4">Number of Monuments to Date</h1>
             <Chart data={data} type="bar" />
+            {/if}
         </div>
         <div class="column box has-text-centered">
+          <button class="primary" on:click="{categoryTrue}">
+            Monuments By Category
+          </button>
+          {#if categoryButton === true }
             <h1 class="title is-4">Types of Monuments</h1>
             <Chart data={totalByCategory} type="line" />
+            {/if}
         </div>
     </div>
   </div>
