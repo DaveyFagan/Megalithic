@@ -73,7 +73,4 @@
             <Chart data={totalByCategory} type="line" />
         </div>
     </div>
-    <div class="column has-text-centered">
-      <img alt="Homer" src={monument2} width="300"/>
-    </div>
   </div>
