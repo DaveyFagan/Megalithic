@@ -1,5 +1,5 @@
 <script>
-    import 'leaflet/dist/leaflet.css';
+   // import 'leaflet/dist/leaflet.css';
     import {SatMap} from '../services/sat-map';
     import {getContext, onMount} from 'svelte'
     import {placeV} from "../store.js"
